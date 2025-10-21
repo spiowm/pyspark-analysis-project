@@ -1,6 +1,8 @@
 from pyspark.sql import SparkSession
 import pandas as pd
 
+from src.utils.stats import show_numeric_stats
+
 
 def main():
     spark = (
@@ -19,8 +21,15 @@ def main():
     print(f"Pandas Version: {pd_version}")
     print("=" * 60)
 
+    # Створити тестовий датафрейм
+    df_we = spark.createDataFrame(
+        data=[("Pavlo", 20), ("Oleksiy", 20)], schema=["name", "age"]
+    )
+    df_we.show()
+
     # Код для аналізу даних буде тут
     df = spark.read.csv("data/accepted_credit_scores.csv")
+    show_numeric_stats(df)
 
     spark.stop()
 

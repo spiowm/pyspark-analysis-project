@@ -14,7 +14,7 @@ docker-compose up --build -d
 docker-compose up -d
 
 # Виконати main.py
-docker exec -it pyspark_app python3 /app/src/main.py
+docker exec -it pyspark_app python3 -m src.main
 ```
 
 **Зупинка:**
