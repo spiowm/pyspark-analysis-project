@@ -2,6 +2,15 @@ from pyspark.sql import SparkSession
 import pandas as pd
 
 from src.utils.stats import show_numeric_stats
+from src.questions.pipeline import QuestionsPipeline
+from src.questions.credit_risk_analyzer import (
+    AvgLoanForHomeowners,
+    HighRiskDebtorsCount,
+    LowFicoDelinquencyRate,
+    StateCreditProfile,
+    ProfessionCreditLimit,
+    IncomeDifferenceByState,
+)
 
 
 def main():
@@ -28,8 +37,24 @@ def main():
     df_we.show()
 
     # Код для аналізу даних буде тут
+    # Fix this
     df = spark.read.csv("data/accepted_credit_scores.csv")
     show_numeric_stats(df)
+
+    # Бізнес-питання від Павла
+    pipeline = QuestionsPipeline(
+        steps=[
+            AvgLoanForHomeowners(),
+            HighRiskDebtorsCount(),
+            LowFicoDelinquencyRate(),
+            StateCreditProfile(),
+            ProfessionCreditLimit(),
+            IncomeDifferenceByState(),
+        ],
+        spark=spark,
+        data_path="data/accepted_credit_scores.csv",
+    )
+    pipeline.run("ПАВЛА")
 
     spark.stop()
 
