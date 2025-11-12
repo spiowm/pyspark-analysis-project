@@ -1,0 +1,8 @@
+services:
+  spark-app:
+    build: .
+    container_name: pyspark_app
+    volumes:
+      - ./src:/app/src
+      - ./data:/app/data
+    command: tail -f /dev/null

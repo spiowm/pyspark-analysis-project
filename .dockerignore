@@ -1,0 +1,20 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+.venv
+venv/
+
+# uv lock-файл (генерується в контейнері)
+uv.lock
+
+# Тести та build
+.pytest_cache/
+dist/
+build/
+*.egg-info/
+task.md
+.idea
