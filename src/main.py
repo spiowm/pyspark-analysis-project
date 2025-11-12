@@ -43,9 +43,7 @@ def main():
     df_we.show()
 
     # Код для аналізу даних буде тут
-    # Fix this
-    df = spark.read.csv("data/accepted_credit_scores.csv")
-    show_numeric_stats(df)
+    show_numeric_stats(spark, "data/accepted_credit_scores.csv")
 
     # Бізнес-питання від Павла
     pipeline_pavlo = QuestionsPipeline(
