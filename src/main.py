@@ -10,6 +10,12 @@ from src.questions.credit_risk_analyzer import (
     StateCreditProfile,
     ProfessionCreditLimit,
     IncomeDifferenceByState,
+    StateDefaultRiskAnalysis,
+    CreditHistoryImpactOnRate,
+    IndividualVsJointApplications,
+    PurposeDelinquencyAnalysis,
+    OpenAccountsImpactAnalysis,
+    VerificationStatusImpact,
 )
 
 
@@ -42,7 +48,7 @@ def main():
     show_numeric_stats(df)
 
     # Бізнес-питання від Павла
-    pipeline = QuestionsPipeline(
+    pipeline_pavlo = QuestionsPipeline(
         steps=[
             AvgLoanForHomeowners(),
             HighRiskDebtorsCount(),
@@ -54,7 +60,22 @@ def main():
         spark=spark,
         data_path="data/accepted_credit_scores.csv",
     )
-    pipeline.run("ПАВЛА")
+    pipeline_pavlo.run("ПАВЛА")
+
+    # Бізнес-питання від Олексія
+    pipeline_oleksii = QuestionsPipeline(
+        steps=[
+            StateDefaultRiskAnalysis(),
+            CreditHistoryImpactOnRate(),
+            IndividualVsJointApplications(),
+            PurposeDelinquencyAnalysis(),
+            OpenAccountsImpactAnalysis(),
+            VerificationStatusImpact(),
+        ],
+        spark=spark,
+        data_path="data/accepted_credit_scores.csv",
+    )
+    pipeline_oleksii.run("ОЛЕКСІЯ")
 
     spark.stop()
 

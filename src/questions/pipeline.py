@@ -1,7 +1,6 @@
 from src.questions.credit_risk_analyzer import BusinessQuestion
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
-from pyspark.sql.types import DoubleType, IntegerType
 
 from abc import ABC, abstractmethod
 
@@ -66,6 +65,8 @@ class QuestionsPipeline(Pipeline):
             "dti": "DOUBLE",
             "total_rec_late_fee": "DOUBLE",
             "tot_hi_cred_lim": "DOUBLE",
+            "int_rate": "DOUBLE",
+            "open_acc": "DOUBLE",
         }
 
         prepared_df = df
