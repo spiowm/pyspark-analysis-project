@@ -9,6 +9,7 @@ from src.dataset.loader import DataLoader
 from src.dataset.cleaner import DataCleaner
 from src.dataset.visualizer import DataVisualizer
 from src.dataset.exporter import DataExporter
+from src.dataset.merger import CsvMerger
 
 
 def main():
@@ -53,6 +54,13 @@ def main():
     # Export data
     exporter = DataExporter(cleaned_data)
     exporter.save_as_folder()
+    
+    # Merge part files into a single CSV
+    merger = CsvMerger(
+        parts_folder='/app/data/cleaned-data',
+        output_file='/app/data/cleaned_data_merged.csv'
+    )
+    merger.merge()
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ from src.dataset.loader import DataLoader
 from src.dataset.cleaner import DataCleaner
 from src.dataset.visualizer import DataVisualizer
 from src.dataset.exporter import DataExporter
+from src.dataset.merger import CsvMerger
 
 __all__ = [
     'create_spark_session',
@@ -11,4 +12,5 @@ __all__ = [
     'DataCleaner',
     'DataVisualizer',
     'DataExporter',
+    'CsvMerger',
 ]
