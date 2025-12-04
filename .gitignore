@@ -52,6 +52,7 @@ data/*.parquet
 data/*.json
 data/*.txt
 !data/.gitkeep
+/data
 
 # Logs
 *.log
