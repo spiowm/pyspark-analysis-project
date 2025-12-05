@@ -12,7 +12,7 @@ class DataCleaner:
     
     # Object columns to drop
     OBJECT_COLUMNS_TO_DROP = [
-        'verification_status', 'issue_d', 'loan_status', 'pymnt_plan', 'url',
+        'verification_status', 'issue_d', 'pymnt_plan', 'url',
         'zip_code', 'addr_state', 'earliest_cr_line', 'initial_list_status',
         'last_pymnt_d', 'last_credit_pull_d', 'application_type', 'disbursement_method'
     ]
